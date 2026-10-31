@@ -1,0 +1,32 @@
+Site completo e responsivo - sim
+Domínio configurado - sim
+Hospedagem configurada - sim
+HTTPS/SSL ativo - sim
+Favicon - sim
+404.html -sim
+robots.txt - sim
+sitemap.xml - sim
+title da página - sim 
+Meta description - sim
+H1, H2 e demais headings organizados - sim
+alt nas imagens - sim
+URLs amigáveis - sim
+Meta tags Open Graph - sim 
+Imagens otimizadas - sim
+Código CSS/JS otimizado - sim 
+Site testado no celular - sim
+Site testado no computador - sim
+Todos os links funcionando - sim
+Botões funcionando - sim
+WhatsApp funcionando - sim
+Links de e-mail funcionando - sim 
+Formulários funcionando - nao tem
+Google Search Console configurado - a fazer 
+Google Analytics configurado, se necessário - a fazer 
+Pixel da Meta, se necessário - nao tem
+Teste de velocidade - a fazer
+Teste de SEO- a fazer
+Verificação de erros no console - sim
+Backup dos arquivos do site - sim
+Credenciais de acesso organizadas - nao necessario 
+llms.txt — opcional - nao preciso
