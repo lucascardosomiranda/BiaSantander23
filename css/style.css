@@ -130,7 +130,7 @@ h2 {
   display: flex;
   align-items: center;
   overflow: hidden;
-  background: url(../assets/hero-fundo.svg) center/cover no-repeat, var(--grad-preto)
+  background: url(../assets/fundohero.webp) center/cover no-repeat, var(--grad-preto)
 }
 
 .hero-forma {
