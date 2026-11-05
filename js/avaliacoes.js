@@ -32,6 +32,19 @@
   const ts = (r) => new Date(pick(r, ["publishedAt", "createTime", "createdAt"])).getTime() || 0;
   const find = (o, n = 0) => Array.isArray(o) ? (o.length && typeof o[0] === "object" ? o : null) : o && typeof o === "object" && n < 4 ? Object.values(o).reduce((a, v) => a || find(v, n + 1), null) : null;
 
+  const deep = (o, keys, n = 0) => {
+    if (!o || typeof o !== "object" || Array.isArray(o) || n > 5) return null;
+    for (const k of keys) {
+      const v = typeof o[k] === "string" ? parseFloat(o[k]) : o[k];
+      if (typeof v === "number" && !isNaN(v)) return v;
+    }
+    for (const v of Object.values(o)) {
+      const r = deep(v, keys, n + 1);
+      if (r != null) return r;
+    }
+    return null;
+  };
+
   function quando(s) {
     const d = new Date(s);
     if (!s || isNaN(d)) return "";
@@ -145,11 +158,11 @@
     if (!list || !list.length) throw new Error("Sem avaliações na resposta");
     list = list.slice().sort((a, b) => ts(b) - ts(a));
     render(list.map(normalizar));
-    let nota = pick(d, ["profile.averageRating", "averageRating", "profile.rating", "rating"]);
+    let nota = deep(d, ["averageRating", "ratingAverage", "rating"]);
     if (typeof nota !== "number") nota = list.reduce((s, r) => s + normalizar(r).n, 0) / list.length;
     preencherResumo(nota);
-    const tot = pick(d, ["profile.totalReviewCount", "totalReviewCount", "profile.reviewCount", "reviewCount", "totalReviews", "total"]);
+    const tot = deep(d, ["totalReviewCount", "reviewCount", "totalReviews", "userRatingCount", "total"]);
     const tEl = document.getElementById("fwTotal");
-    if (tEl && (typeof tot === "number" || typeof tot === "string")) tEl.textContent = tot + " avaliações";
+    if (tEl && tot != null) tEl.textContent = tot + " avaliações";
   }).catch((e) => console.warn("Avaliações: usando cópia fixa.", e));
 })();
